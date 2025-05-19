@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>長文単語抽出ツール</title>
+</head>
+<body>
+    <h1>英語長文から辞書マッチ単語を抽出</h1>
+
+    <form action="/" method="post" enctype="multipart/form-data">
+        <textarea name="text" rows="10" cols="60" placeholder="ここに英文を入力してください..."></textarea><br><br>
+
+        <p><strong>使用する辞書ファイル形式を選択</strong></p>
+        <label><input type="radio" name="filetype" value="builtin" checked> 組み込み辞書（ターゲット1900）</label><br>
+        <label><input type="radio" name="filetype" value="txt"> .txt（タブ区切り）</label><br>
+        <label><input type="radio" name="filetype" value="csv"> .csv（カンマ区切り）</label><br>
+        <label><input type="radio" name="filetype" value="xlsx"> .xlsx（Excel：「単語」「日本語」「語法」列）</label><br><br>
+
+        <input type="file" name="wordlist"><br><br>
+        <input type="submit" value="抽出してダウンロード">
+    </form>
+
+    <hr>
+
+    <h3>📘 ファイル形式ごとの記載例</h3>
+
+    <p><strong>.txt（タブ区切り）:</strong></p>
+    <pre>
+run	走る
+reach	到達する
+wonder	不思議に思う
+    </pre>
+
+    <p><strong>.csv（カンマ区切り）:</strong></p>
+    <pre>
+run,走る
+reach,到達する
+wonder,不思議に思う
+    </pre>
+
+    <p><strong>.xlsx（Excelファイル）:</strong></p>
+    <ul>
+        <li>列名「単語」「日本語」「語法」が必要（※語法は省略可）</li>
+        <li>語法があれば「意味｜語法」として出力されます</li>
+    </ul>
+</body>
+</html>

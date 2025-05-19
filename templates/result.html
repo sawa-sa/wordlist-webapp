@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>抽出結果（印刷＋ダウンロード）</title>
+    <style>
+        body { font-family: sans-serif; margin: 2em; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #aaa; padding: 8px; text-align: left; }
+        th { background-color: #f0f0f0; }
+        .print-button { margin-bottom: 20px; }
+        @media print {
+            .print-button { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <h1>抽出単語リスト</h1>
+    <button class="print-button" onclick="window.print()">🖨️ 印刷</button>
+    <a href="{{ txt_path }}" class="print-button" download>⬇️ TXTダウンロード</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>単語</th>
+                <th>意味</th>
+                <th>語法</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for word, meaning, usage in results %}
+            <tr>
+                <td>{{ word }}</td>
+                <td>{{ meaning }}</td>
+                <td>{{ usage }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script>
+        const link = document.createElement('a');
+        link.href = "{{ txt_path }}";
+        link.download = "長文単語リスト.txt";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    </script>
+</body>
+</html>
