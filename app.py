@@ -1,6 +1,13 @@
 from flask import Flask, request, render_template
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import wordnet
+import nltk
+
+# 🔽 ここで必要なNLTK辞書データを確実にダウンロード
+nltk.download('punkt')
+nltk.download('wordnet')
+nltk.download('averaged_perceptron_tagger')
+
 import pandas as pd
 import csv
 import os
