@@ -3,7 +3,6 @@ from nltk.stem import WordNetLemmatizer
 from nltk.corpus import wordnet
 import nltk
 
-# 🔽 ここで必要なNLTK辞書データを確実にダウンロード
 nltk.download('punkt')
 nltk.download('wordnet')
 nltk.download('averaged_perceptron_tagger')
@@ -17,7 +16,7 @@ app = Flask(__name__)
 lemmatizer = WordNetLemmatizer()
 BUILTIN_DICTIONARY = {}
 
-# 組み込み辞書の読み込み（安全性向上）
+# 組み込み辞書の読み込み
 def load_builtin_dictionary():
     global BUILTIN_DICTIONARY
     path = "data/target1900.xlsx"
